@@ -14,23 +14,118 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# How to Set Up a Modern Next.js 15 Project with Tailwind CSS v4, React 18 & ShadCN UI
 
-## Learn More
+In this guide, we'll walk through how to create a modern web project using:
 
-To learn more about Next.js, take a look at the following resources:
+- Next.js 15 (App Router)
+- Tailwind CSS v4
+- **React 18**
+- **ShadCN UI (latest)**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This is perfect for anyone looking to build a fast, modern, and beautifully styled application.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Prerequisites**
 
-## Deploy on Vercel
+Make sure you have the following installed:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Node.js `v18` or higher
+- npm or yarn or pnpm
+- Git
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# **1. C**reate a New Next.js 15 Project
+
+```jsx
+npx create-next-app@latest my-modern-app
+```
+
+Choose the following options during setup:
+
+- TypeScript – **Yes**
+- App Router – **Yes**
+- Tailwind CSS – **No** (we'll manually install Tailwind v4)
+- ESLint – **Yes**
+- src/ directory – **Yes**
+- import alias – `@/*`
+
+# 2. Update React & Next.js in `package.json`
+
+```jsx
+"next": "15.3.2",
+"react": "18.3.1",
+"react-dom": "18.3.1
+```
+
+Then run:
+
+```jsx
+npm install
+```
+
+# 3. Install Tailwind CSS v4
+
+**01, Install Tailwind CSS**
+
+```jsx
+npm install tailwindcss @tailwindcss/postcss postcss
+```
+
+**02.Add Tailwind to your PostCSS configuration**
+
+Add **`@tailwindcss/postcss`** to your **`postcss.config.mjs`** file, or wherever PostCSS is configured in your project.
+
+```jsx
+export default {
+  plugins: {
+    "@tailwindcss/postcss": {},
+  }
+}
+```
+
+**03.Import Tailwind CSS**
+
+Add an **`@import`** to your CSS file that imports Tailwind CSS.
+
+```jsx
+@import "tailwindcss";
+```
+
+**04.Start your build process**
+
+Run your build process with **`npm run dev`** or whatever command is configured in your **`package.json`** file.
+
+```jsx
+npm run dev
+```
+
+# 4 .  Install ShadCN UI (Latest)
+
+Run the ShadCN setup command:
+
+```jsx
+pnpm dlx shadcn@latest init
+```
+
+After setup, you can install any component:
+
+```
+ npx shadcn@latest add button
+```
+
+# 5.Test Everything is Working
+
+In `src/app/page.tsx`, try adding:
+
+```jsx
+import { Button } from "@/components/ui/button";
+
+export default function Home() {
+  return (
+    <main className="flex min-h-screen items-center justify-center">
+      <Button variant="destructive" size="lg">Click Me</Button>
+    </main>
+  );
+}
+```
