@@ -1,10 +1,12 @@
-import { Button } from "@/components/ui/button";
+import CreateTaskForm from "@/components/form";
 
-export default function Home() {
+
+export default function Page() {
   return (
-   <div>
-    <Button variant={"destructive"} size={"lg"}>Click me here is a button</Button>
-    
-   </div>
-  );
+    <div>
+      <h1>Welcome to my Next.js app</h1>
+      {/* <Button>Click me</Button> */}
+      <CreateTaskForm/>
+    </div>
+  )
 }
