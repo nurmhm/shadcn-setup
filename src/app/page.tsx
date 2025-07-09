@@ -1,12 +1,17 @@
-import CreateTaskForm from "@/components/form";
+"use client";
 
-export default function Page() {
+import dynamic from "next/dynamic";
+
+// Dynamically import the SimpleEditor to avoid SSR issues
+const SimpleEditor = dynamic(() => import("../components/SimpleEditor"), {
+  ssr: false,
+  loading: () => <p>Loading editor...</p>,
+});
+
+export default function Home() {
   return (
-    <div>
-      <div className="flex justify-center">
-        <h1 className="text-4xl font-bold">TODO APP</h1>
-        <p>helllo commmit</p>
-      </div>
-    </div>
+    <main>
+      <SimpleEditor />
+    </main>
   );
 }
